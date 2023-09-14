@@ -27,16 +27,45 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## challenge 1
 ## create a vector of 1 word character strings comprising the first line of the novel Ulysses. "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed." 
-
-
+```{r}
+ulysses_quote
+```
+```{r}
+ulysses_quote_vector<- c(strsplit(ulysses_quote, " ")[[1]])
+ulysses_quote_vector
+```
 
 ## extract every third element of this vector. 
-
-
+```{r}
+count <-0
+for (i in ulysses_quote_vector){
+  count = count + 1
+  if (count == 3){
+    print(i)
+    count = 0
+  }
+}
+```
 ## the following function, gsub("[[:punct:]]","", *string*), applied to *string* will remove punctuation and special characters from that string. 
 
-
-
+```{r}
+ulysses_quote1 <- gsub("[[:punct:]]", "", ulysses_quote)
+ulysses_quote1
+```
+```{r}
+ulysses_quote_vector1<- c(strsplit(ulysses_quote1, " ")[[1]])
+ulysses_quote_vector1
+```
+```{r}
+counter <- 0
+for (p in ulysses_quote_vector1){
+  counter = counter + 1
+  if (counter == 3){
+    print(p)
+    counter = 0
+  }
+}
+```
 ## challenge 2
 ## given the matrix, m, above, extract the 2nd,3rd, and 6th columns and assign them to the variable x. 
 
