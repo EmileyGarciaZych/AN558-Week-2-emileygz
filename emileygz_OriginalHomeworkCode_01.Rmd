@@ -1,0 +1,114 @@
+---
+title: "well-annotated/commented"
+author: "Emiley Garcia-Zych"
+date: "2023-09-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## challenge 1
+## create a vector of 1 word character strings comprising the first line of the novel Ulysses. "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed." 
+
+
+
+## extract every third element of this vector. 
+
+
+## the following function, gsub("[[:punct:]]","", *string*), applied to *string* will remove punctuation and special characters from that string. 
+
+
+
+## challenge 2
+## given the matrix, m, above, extract the 2nd,3rd, and 6th columns and assign them to the variable x. 
+
+
+## given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x.
+
+
+## given the matrix, m, above extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x. 
+
+
+
+
+## challenge 3
+## construct a 4-dimensional, 400 element ray (5x5x4x4) named "a" consisting of the numbers 400 to 1(i.e., a descending series)
+
+
+
+
+## Given this matrix, what would the following return? 
+## a[1,1,1,2]
+
+
+
+
+## a[2,3,2,]
+
+
+
+
+## a[1:5,1:5,3,3]
+
+
+
+
+
+
+## challenge 4
+## create a list representing this (simplified) primate taxonomy: 
+
+
+
+
+
+
+
+
+
+
+
+## challenge 5
+## store the following numbers as a 5 x 3 matrix, called "m3": 3, 0, 1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2
+
+
+
+
+
+
+
+## then, do the following
+## coerce the matrix to a data frame. 
+
+
+
+## as a data frame, coerce the second column to be logical-valued
+
+
+
+## as a data frame, coerce the third column to be factor-valued
+
+
+
+## when you are done, use the str() command to show the data type for each variable in your dataframe. 
+
+
+
