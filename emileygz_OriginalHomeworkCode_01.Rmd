@@ -67,7 +67,30 @@ for (p in ulysses_quote_vector1){
 }
 ```
 ## challenge 2
+## matrix example
+```{r}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+```
+## extracting the elements in row 4, column 5, and assign to the new variable "x" as follows: 
+```{r}
+x <- m[4, 5]
+x
+```
+## extracting an entire row
+```{r}
+y <- m[6,]
+y
+```
+## extracting an entire column 
+```{r}
+z <- m[,3]
+z
+```
 ## given the matrix, m, above, extract the 2nd,3rd, and 6th columns and assign them to the variable x. 
+```{r}
+x <- m[,2]
+```
 
 
 ## given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x.
