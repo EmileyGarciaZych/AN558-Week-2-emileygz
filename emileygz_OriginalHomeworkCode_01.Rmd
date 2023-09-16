@@ -89,18 +89,19 @@ z
 ```
 ## given the matrix, m, above, extract the 2nd,3rd, and 6th columns and assign them to the variable x. 
 ```{r}
-x <- m[,2]
+x <- matrix(data = c(m[,2],m[,3],m[,6]), nrow = 8, ncol = 3, byrow = FALSE)
+x
 ```
-
-
 ## given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x.
-
-
+```{r}
+x <- matrix(data = c(m[6,],m[7,],m[8,]), nrow = 3, ncol = 10, byrow = TRUE)
+x
+```
 ## given the matrix, m, above extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x. 
-
-
-
-
+```{r}
+x <- matrix(data = c(m[2:6,2:9]), nrow = 5, ncol = 8, byrow = FALSE)
+x
+```
 ## challenge 3
 ## construct a 4-dimensional, 400 element ray (5x5x4x4) named "a" consisting of the numbers 400 to 1(i.e., a descending series)
 
