@@ -105,63 +105,110 @@ x
 ## challenge 3
 ## construct a 4-dimensional, 400 element ray (5x5x4x4) named "a" consisting of the numbers 400 to 1(i.e., a descending series)
 
-
-
+```{r}
+a <- array(data = 400:1, dim = c(5,5,4,4))
+a
+```
 
 ## Given this matrix, what would the following return? 
 ## a[1,1,1,2]
 
-
-
+```{r}
+a[1,1,1,2]
+```
 
 ## a[2,3,2,]
-
-
-
+```{r}
+a[2,3,2,]
+```
 
 ## a[1:5,1:5,3,3]
 
-
-
-
-
+```{r}
+a[1:5,1:5,3,3]
+```
 
 ## challenge 4
 ## create a list representing this (simplified) primate taxonomy: 
 
+```{r}
+## Haplorhini 
+##Platyrrhini <- c("Cebidae", "Atelidae", "Pitheciidae")
+##Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae")
+Anthropoidea <- c("Platyrrhini", "Catarrhini")
+Tarsioidea <- c("Tarsiidae")
+Haplorhini <- list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+Haplorhini
 
-
-
-
-
-
-
-
-
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae", "Daubentoniidae")
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+Strepsirhini
+```
+```{r}
+library(data.tree)
+primates <- Node$new("Primates")
+  haplorhini <- primates$AddChild ("Haplorhini")
+    anthropoidea <- haplorhini$AddChild ("Anthropoidea")
+      platyrrhini <- anthropoidea$AddChild ("Platyrrhini")
+        cebidae <- platyrrhini$AddChild ("Cebidae")
+        atelidae <- platyrrhini$AddChild ("Atelidae")
+        pitheciidae <- platyrrhini$AddChild ("Pitheciidae")
+      catarrhini <- anthropoidea$AddChild ("Catarrhini")
+        cercopithecidae <- catarrhini$AddChild ("Cercopithecidae")
+        hylobatidae <- catarrhini$AddChild ("Hylobatidae")
+        hominidae <- catarrhini$AddChild ("Hominidae")
+    tarsioidea <- haplorhini$AddChild ("Tarsioidea")
+        tarsiidae <- tarsioidea$AddChild ("Tarsiidae")
+  strepsirhini <- primates$AddChild ("Strepsirhini")
+    lorisoidea <- strepsirhini$AddChild ("Lorisoidea")
+      lorisdae <- lorisoidea$AddChild ("Lorisdae")
+      galagidae <- lorisoidea$AddChild ("Galagidae")
+    lemuroidea <- strepsirhini$AddChild ("Lemuroidea")
+      cheirogaleidae <- lemuroidea$AddChild ("Cheirogaleidae")
+      lepilemuridae <- lemuroidea$AddChild ("Lepilemuridae")
+      indriidae <- lemuroidea$AddChild ("Indriidae")
+      lemuridae <- lemuroidea$AddChild ("Lemuridae")
+      daubentoniidae <- lemuroidea$AddChild ("Daubentoniidae")
+print(primates)
+```
 
 ## challenge 5
 ## store the following numbers as a 5 x 3 matrix, called "m3": 3, 0, 1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2
 
-
-
-
-
-
+```{r}
+m2 <- c(3, 0, 1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2)
+m3 <- matrix(data = m2, nrow = 5, ncol = 3, byrow = TRUE)
+m3
+```
 
 ## then, do the following
 ## coerce the matrix to a data frame. 
 
-
-
+```{r}
+df <- as.data.frame(m3)
+str(df)
+```
 ## as a data frame, coerce the second column to be logical-valued
 
+```{r}
+
+```
 
 
 ## as a data frame, coerce the third column to be factor-valued
 
+```{r}
+
+```
 
 
 ## when you are done, use the str() command to show the data type for each variable in your dataframe. 
 
+```{r}
+
+```
 
 
