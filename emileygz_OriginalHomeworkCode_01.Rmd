@@ -92,7 +92,7 @@ z
 a)  Given the matrix, m, above, extract the 2nd,3rd, and 6th columns and assign them to the variable x.
 
 ```{r}
-x <- matrix(data = c(m[,2],m[,3],m[,6]), nrow = 8, ncol = 3, byrow = FALSE)
+x <- matrix(data = c(m[,2],m[,3],m[,6]),nrow = 8, ncol = 3, byrow = TRUE)
 x
 ```
 
@@ -208,17 +208,21 @@ str(df)
 c)  ...as a data frame, coerce the second column to be logical-valued
 
 ```{r}
-
+new_df_x2 <- as.logical(df$V2)
+new_df_x2
 ```
 
 d)  ...as a data frame, coerce the third column to be factor-valued
 
 ```{r}
-
+new_df_x3 <- as.factor(df$V3)
+new_df_x3
 ```
 
 e)  When you are done, use the str() command to show the data type for each variable in your dataframe.
 
 ```{r}
-
+str(df)
+str(new_df_x2)
+str(new_df_x3)
 ```
