@@ -129,22 +129,22 @@ a[1:5,1:5,3,3]
 
 a)  **Create a list representing this (simplified) primate taxonomy:**
 
-```{r}
-## Haplorhini 
-##Platyrrhini <- c("Cebidae", "Atelidae", "Pitheciidae")
-##Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae")
-Anthropoidea <- c("Platyrrhini", "Catarrhini")
-Tarsioidea <- c("Tarsiidae")
-Haplorhini <- list(Anthropoidea, Tarsioidea)
-names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
-Haplorhini
+    > *I used the example code for Strepsirhini to create the Haplorhini code. I then put those two loops into a bigger primate loop. The system of nested loops produced the info below.*
 
-Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae", "Daubentoniidae")
-Lorisoidea <- c("Lorisidae", "Galagidae")
-Strepsirhini <- list(Lemuroidea, Lorisoidea)
-names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
-Strepsirhini
+```{r}
+Platyrrhini <-c("Cebidae", "Atelidae", "Pitheciidae")
+Catarrhini <- c("Cercopithecidae","Hylobatidae", "Hominidae")
+Haplorhini <-  list("Anthropoidea"= c("Platyrrhini" = Platyrrhini,"Catarrhini"= Catarrhini),"Tarsioidea" = c("Tarsiidae"))
+                    
+Strepsirhini <- list("Lemuroidea"=c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae", "Daubentoniidae"),"Lorisoidea" =c("Lorisidae", "Galagidae"))
+
+"Primates"
+primates <- list("Haplorhini" = Haplorhini, "Strepsirhini" = Strepsirhini)
+primates
+
 ```
+
+> *I wasn't fond of the way this formatted the lists so I researched how to make a data frame in R. You can do this by installing a package to make a data tree and then creating nodes at every split from the original primate line. It ended up being convoluted and a little messy but I wanted to include it here.*
 
 ```{r}
 library(data.tree)
