@@ -1,0 +1,262 @@
+---
+title: "emileygz_FinalHomeworkCode_01"
+author: "Emiley Garcia-Zych"
+date: "2023-09-19"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Challenge 1
+
+**a) Create a vector of 1 word character strings comprising the first
+line of the novel Ulysses. "Stately, plump Buck Mulligan came from the
+stairhead, bearing a bowl of lather on which a mirror and a razor lay
+crossed."**
+
+> *Step 1: Assign the quote to a string function.*
+
+```{r}
+ulysses_quote <- "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
+ulysses_quote
+```
+
+> *Step 2: Remove punctuation and special characters using the
+> gsub("[[:punct:]]","", string\*) function.*
+
+```{r}
+gsub("[[:punct:]]", "", ulysses_quote)
+```
+
+> *Step 3: Use the string split function to split the quote wherever
+> there is a space. Store this in a new vector.*
+
+```{r}
+ulysses_quote_vector<- c(strsplit(ulysses_quote, " ")[[1]])
+ulysses_quote_vector
+```
+
+**b) Extract every third element of this vector.**
+
+> *I did this in two ways...*
+>
+> *Method A: Using a for loop. A for loop is used to iterate over a
+> sequence a specific number of times. I established a variable to keep
+> track of which word the loop is on. When the count reaches 3, it
+> prints that word. It keeps going until it reaches the end of the
+> sequence.*
+
+```{r}
+count <-0 
+for (i in ulysses_quote_vector){
+  count = count + 1 
+  if (count == 3){ 
+    print(i) 
+    count = 0 }
+  }
+```
+
+> *Method B: Using the sequence function. The sequence function
+> generates the sequence for each element i in the provided vector. I
+> set it to count through the length of the vector in order to avoid
+> hard coding set numbers.*
+
+```{r}
+ulysses_quote_vector [seq(from = 0, to = length(ulysses_quote_vector), by = 3)]
+```
+
+# Challenge 2
+
+**matrix example provided from module...**
+
+```{r}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE) 
+m
+```
+
+**a) Given the matrix, m, above, extract the 2nd,3rd, and 6th columns
+and assign them to the variable x.**
+
+> *Use the matrix function to extract data from the specified (2nd, 3rd,
+> and 6th column) and then assign them to a new variable x. The matrix
+> function requires the inputs (data, number of rows, number of columns,
+> and the logical variable: byrow). In this instance, we leave the
+> "x-coordinate"/row value empty so we can get the entire column and not
+> just one value.*
+
+```{r}
+x <- matrix(data = c(m[,2],m[,3],m[,6]),nrow = 8, ncol = 3, byrow = TRUE) 
+x
+```
+
+**b) Given the matrix, m, above, extract the 6th to 8th row and assign
+them to the variable x.**
+
+> *Similarly to challenge 2a, use the matrix function to pull the values
+> from row 6 and 8 and re-assign them to variable x.*
+
+```{r}
+x<- m[6:8,]
+x
+```
+
+**c) Given the matrix, m, above extract the elements from row 2, column
+2 to row 6, column 9 and assign them to the variable x.**
+
+> *Similarly to the above parts, use the matrix function to extract the
+> elements.*
+
+```{r}
+x<- m[2:6,2:9]
+x
+```
+
+# Challenge 3
+
+**a) Construct a 4-dimensional, 400 element ray (5x5x4x4) named "a"
+consisting of the numbers 400 to 1(i.e., a descending series)**
+
+> *Use the array function to create the specified array and store it
+> into variable "a." The array function requires the input (data,
+> dimensions = length (data), dimnames(this is a logical variable and
+> will be ignored if not provided). Because the array is in descending
+> series, we want to use 400:1 instead of ascending 1:400. The
+> dimensions are 5x5x4x4.*
+
+```{r}
+ a <- array(data = 400:1, dim = c(5,5,4,4))
+ a
+```
+
+**b) Given this matrix, what would the following return?**
+
+**a[1,1,1,2]**
+
+```{r}
+a[1,1,1,2]
+```
+
+**a[2,3,2,]**
+
+```{r}
+a[2,3,2,]
+```
+
+**a[1:5,1:5,3,3]**
+
+```{r}
+a[1:5,1:5,3,3]
+```
+
+# Challenge 4
+
+**a) Create a list representing this (simplified) primate taxonomy:**
+
+> *I used the example code for Strepsirhini to create the Haplorhini
+> code. I then put those two loops into a bigger primate loop. The
+> system of nested loops produced the info below.*
+
+```{r}
+Platyrrhini <-c("Cebidae", "Atelidae", "Pitheciidae") 
+Catarrhini <- c("Cercopithecidae","Hylobatidae", "Hominidae") 
+Haplorhini <- list("Anthropoidea"= c("Platyrrhini" = Platyrrhini,"Catarrhini"= Catarrhini),"Tarsioidea" = c("Tarsiidae"))
+
+Strepsirhini <- list("Lemuroidea"=c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae", "Daubentoniidae"),"Lorisoidea" =c("Lorisidae", "Galagidae"))
+
+"Primates" 
+primates <- list("Haplorhini" = Haplorhini, "Strepsirhini" = Strepsirhini) 
+primates
+```
+
+> *I wasn't fond of the way this formatted the lists so I researched how
+> to make a data tree in R. You can do this by installing a package to
+> make a data tree and then creating nodes at every split from the
+> original primate line. It ended up being convoluted and a little messy
+> but I wanted to include it here.*
+
+```{r}
+library(data.tree) 
+primates <- Node$new("Primates")  
+haplorhini <- primates$AddChild ("Haplorhini") 
+anthropoidea <- haplorhini$AddChild ("Anthropoidea") 
+platyrrhini <- anthropoidea$AddChild ("Platyrrhini") 
+cebidae <- platyrrhini$AddChild ("Cebidae")  
+atelidae <- platyrrhini$AddChild ("Atelidae") 
+pitheciidae <- platyrrhini$AddChild ("Pitheciidae")  
+catarrhini <- anthropoidea$AddChild ("Catarrhini") 
+cercopithecidae <- catarrhini$AddChild ("Cercopithecidae")  
+hylobatidae <- catarrhini$AddChild ("Hylobatidae") 
+hominidae <- catarrhini$AddChild ("Hominidae")  
+tarsioidea <- haplorhini$AddChild ("Tarsioidea") 
+tarsiidae <- tarsioidea$AddChild ("Tarsiidae")  
+strepsirhini <- primates$AddChild ("Strepsirhini") 
+lorisoidea <- strepsirhini$AddChild ("Lorisoidea")  
+lorisdae <- lorisoidea$AddChild ("Lorisdae") 
+galagidae <- lorisoidea$AddChild ("Galagidae")  
+lemuroidea <- strepsirhini$AddChild ("Lemuroidea") 
+cheirogaleidae <- lemuroidea$AddChild ("Cheirogaleidae")  
+lepilemuridae <- lemuroidea$AddChild ("Lepilemuridae") 
+indriidae <- lemuroidea$AddChild ("Indriidae")  
+lemuridae <- lemuroidea$AddChild ("Lemuridae") 
+daubentoniidae <- lemuroidea$AddChild ("Daubentoniidae") 
+print(primates)
+
+```
+
+# **Challenge 5**
+
+**a) Store the following numbers as a 5 x 3 matrix, called "m3": 3, 0,
+1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2**
+
+> *To do this, I stored the data in a matrix called m3.*
+
+```{r}
+m3 <- matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), 5, 3, byrow=TRUE) 
+m3
+```
+
+**b) ...coerce the matrix to a data frame.**
+
+> *from the module, coerce the matrix to a data frame using the
+> as.data.frame() function. Insert m3 as the matrix.*
+
+```{r}
+df <- as.data.frame(m3) 
+str(df)
+```
+
+**c) ...as a data frame, coerce the second column to be logical-valued**
+
+> *Similarly to challenge 5b, use the as.logical() function obtained in
+> the readings to coerce the second column to be logical-valued.*
+
+```{r}
+new_df_x2<- as.logical(df$V2)
+df$V2 <- new_df_x2
+df$V2
+```
+
+**d) ...as a data frame, coerce the third column to be factor-valued**
+
+> *Similarly to challenge 5c, use the as.factor() function obtained in
+> the readings to coerce the third column to be factor valued.*
+
+```{r}
+new_df_x3 <- as.factor(df$V3)
+df$V3 <- new_df_x3
+df$V3
+```
+
+**e) When you are done, use the str() command to show the data type for
+each variable in your data frame.**
+
+*Use the str() to show the data type for the editied data frame.*
+
+```{r}
+str(df)
+```
