@@ -180,6 +180,7 @@ primates
 > but I wanted to include it here.*
 
 ```{r}
+install.packages('data.tree')
 library(data.tree) 
 primates <- Node$new("Primates")  
 haplorhini <- primates$AddChild ("Haplorhini") 
