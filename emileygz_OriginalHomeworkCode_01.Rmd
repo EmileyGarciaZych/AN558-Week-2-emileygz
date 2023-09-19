@@ -16,13 +16,14 @@ a)  **Create a vector of 1 word character strings comprising the first line of t
 > *Step 1: Assign the quote to a string function.*
 
 ```{r}
+ulysses_quote <- "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
 ulysses_quote
 ```
 
 > *Step 2: Remove punctuation and special characters using the gsub("[[:punct:]]","",* string\*) function.
 
 ```{r}
-ulysses_quote <- gsub("[[:punct:]]", "", ulysses_quote)
+gsub("[[:punct:]]", "", ulysses_quote)
 ulysses_quote
 ```
 
@@ -81,16 +82,16 @@ b)  **Given the matrix, m, above, extract the 6th to 8th row and assign them to 
 > *Similarly to challenge 2a, use the matrix function to pull the values from row 6 and 8 and re-assign them to variable x.*
 
 ```{r}
-x <- matrix(data = c(m[6,],m[7,],m[8,]), nrow = 3, ncol = 10, byrow = TRUE)
+x<- m[6:8,]
 x
 ```
 
 c)  **Given the matrix, m, above extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.**
 
-> *Similarly to the above parts, use the matrix function to extract the elements. Change byrow to FALSE as we want to fill the matrix by columns, not by rows.*
+> *Similarly to the above parts, use the matrix function to extract the elements.*
 
 ```{r}
-x <- matrix(data = c(m[2:6,2:9]), nrow = 5, ncol = 8, byrow = FALSE)
+x<- m[2:6,2:9]
 x
 ```
 
@@ -144,7 +145,7 @@ primates
 
 ```
 
-> *I wasn't fond of the way this formatted the lists so I researched how to make a data frame in R. You can do this by installing a package to make a data tree and then creating nodes at every split from the original primate line. It ended up being convoluted and a little messy but I wanted to include it here.*
+> *I wasn't fond of the way this formatted the lists so I researched how to make a data tree in R. You can do this by installing a package to make a data tree and then creating nodes at every split from the original primate line. It ended up being convoluted and a little messy but I wanted to include it here.*
 
 ```{r}
 library(data.tree)
@@ -178,11 +179,10 @@ print(primates)
 
 a)  **Store the following numbers as a 5 x 3 matrix, called "m3": 3, 0, 1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2**
 
-    > *To do this, I stored the data in a vector called m2. I then created a matrix with m2 as the data and the dimensions 5 and 3. That matrix was called m3.*
+    > *To do this, I stored the data in a matrix called m3.*
 
 ```{r}
-m2 <- c(3, 0, 1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2)
-m3 <- matrix(data = m2, nrow = 5, ncol = 3, byrow = TRUE)
+m3 <- matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), 5, 3, byrow=TRUE)
 m3
 ```
 
@@ -201,7 +201,8 @@ c)  **...as a data frame, coerce the second column to be logical-valued**
 
 ```{r}
 new_df_x2 <- as.logical(df$V2)
-new_df_x2
+df$V2 <- new_df_x2
+df$V2
 ```
 
 d)  **...as a data frame, coerce the third column to be factor-valued**
@@ -210,15 +211,14 @@ d)  **...as a data frame, coerce the third column to be factor-valued**
 
 ```{r}
 new_df_x3 <- as.factor(df$V3)
-new_df_x3
+df$V3 <- new_df_x3
+df$V3
 ```
 
-e)  **When you are done, use the str() command to show the data type for each variable in your dataframe.**
+e)  **When you are done, use the str() command to show the data type for each variable in your data frame.**
 
-> *Use the str() to show the data type for all the data frames we have manipulated.*
+> *Use the str() to show the data type for the editied data frame.*
 
 ```{r}
 str(df)
-str(new_df_x2)
-str(new_df_x3)
 ```
