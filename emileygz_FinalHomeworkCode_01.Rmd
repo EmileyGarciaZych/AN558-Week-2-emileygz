@@ -6,6 +6,7 @@ output: html_document
 editor_options: 
   markdown: 
     wrap: 72
+     theme: cerulean
 ---
 
 ```{r setup, include=FALSE}
@@ -180,7 +181,6 @@ primates
 > but I wanted to include it here.*
 
 ```{r}
-install.packages('data.tree')
 library(data.tree) 
 primates <- Node$new("Primates")  
 haplorhini <- primates$AddChild ("Haplorhini") 
